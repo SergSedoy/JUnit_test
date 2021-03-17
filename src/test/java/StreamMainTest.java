@@ -10,38 +10,32 @@ import static org.junit.jupiter.api.Assertions.*;
 class StreamMainTest {
 
     @Test
-    void test1() {
+    void testPositivList() {
         List<Integer> intList = Arrays.asList(1, 2, 5, 16, -1, -2, 0, 32, 3, 5, 8, 23, 4);
-        List<Integer> expectedList = Arrays.asList(1, 2, 5, 16, 32, 3, 5, 8, 23, 4);
+        List<Integer> expected = Arrays.asList(1, 2, 5, 16, 32, 3, 5, 8, 23, 4);
 
-        List<Integer> actualList = intList.stream()
-                .filter(x -> x > 0)
-                .collect(Collectors.toList());
+        List<Integer> actualResult = StreamMain.streamFilterPositiv(intList);
 
-        assertEquals(expectedList, actualList);
+        assertEquals(expected, actualResult);
     }
 
     @Test
-    void test2() {
+    void testEvenList() {
         List<Integer> intList = Arrays.asList(1, 2, 5, 16, 32, 3, 5, 8, 23, 4);
-        List<Integer> expectedList = Arrays.asList(2, 16, 32, 8, 4);
+        List<Integer> expected = Arrays.asList(2, 16, 32, 8, 4);
 
-        List<Integer> actualList = intList.stream()
-                .filter(x -> x % 2 == 0)
-                .collect(Collectors.toList());
+        List<Integer> actualResult = StreamMain.streamFilterEven(intList);
 
-        assertEquals(expectedList, actualList);
+        assertEquals(expected, actualResult);
     }
 
     @Test
-    void test3() {
+    void testStreamSorted() {
         List<Integer> intList = Arrays.asList(2, 16, 32, 8, 4);
-        List<Integer> expectedList = Arrays.asList(2, 4, 8, 16, 32);
+        List<Integer> expected = Arrays.asList(2, 4, 8, 16, 32);
 
-        List<Integer> actualList = intList.stream()
-                .sorted(Comparator.naturalOrder())
-                .collect(Collectors.toList());
+        List<Integer> actualResult = StreamMain.streamSorted(intList);
 
-        assertEquals(expectedList, actualList);
+        assertEquals(expected, actualResult);
     }
 }

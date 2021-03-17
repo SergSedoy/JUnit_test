@@ -7,10 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class MainTest {
 
     @Test
-    void testScanner() {
-        Scanner scanner = new Scanner(System.in);
-            assertThrows(NoSuchElementException.class, scanner::next);
+    void testInputFloor() {
 
+            assertThrows(NoSuchElementException.class, () -> Main.inputFloor());
     }
-
 }

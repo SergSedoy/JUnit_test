@@ -4,20 +4,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Deque<Integer> floorDeque = new ArrayDeque<>();
-        while (true) {
-            System.out.println("Ожидаю ввода этажа: (для завершения введите 0)");
-            int numberFloor = scanner.nextInt();
-            if (numberFloor == 0) {
-                break;
-            }
-            if (numberFloor > 25 || numberFloor < 0) {
-                System.out.println("Такого этажа нет в доме!");
-                continue;
-            }
-            floorDeque.add(numberFloor);
-        }
+
+        Deque<Integer> floorDeque = inputFloor();
+
         int waitDoorsInSeconds = 10;
         int waitMoveInSeconds = 5;
         int totalSeconds = 0;
@@ -34,6 +23,26 @@ public class Main {
         }
         System.out.println();
         System.out.println("Время затраченное лифтом на маршрут = " + totalSeconds + " сек.");
+    }
+
+    public static Deque<Integer> inputFloor() {
+        Scanner scanner = new Scanner(System.in);
+        Deque<Integer> floorDeque = new ArrayDeque<>();
+
+        while (true) {
+            System.out.println("Ожидаю ввода этажа: (для завершения введите 0)");
+            int numberFloor = scanner.nextInt();
+            //if (scanner.hasNextInt())
+            if (numberFloor == 0) {
+                break;
+            }
+            if (numberFloor > 25 || numberFloor < 0) {
+                System.out.println("Такого этажа нет в доме!");
+                continue;
+            }
+            floorDeque.add(numberFloor);
+        }
         scanner.close();
+        return floorDeque;
     }
 }
